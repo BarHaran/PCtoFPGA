@@ -28,8 +28,10 @@ def main():
 	udp_server_socket.bind((local_ip, local_port))
 	print("UDP server up and listening")
 
-	# Listen for incoming DGRAM
-	while(True):
+	message = ""
+
+	# Listen for incoming DGRAM until given exit signal
+	while(message != "exit"):
 	    bytes_address_pair = udp_server_socket.recvfrom(BUFFER_SIZE)
 	    message = bytes_address_pair[0]
 	    address = bytes_address_pair[1]
@@ -39,3 +41,7 @@ def main():
 	    print(client_ip)
 	    # Sending a reply that is equal to what we received to the client
 	    udp_server_socket.sendto(message, address)
+
+
+if __name__ == "__main__":
+	main()
