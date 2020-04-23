@@ -1,17 +1,4 @@
-# Import the socket library
-import socket
-
-BUFFER_SIZE = 1024
-
-# Get the paramters from the user
-###### NEED TO ADD MANY CHECKS #######
-def getAddressPort():
-   ##### Add script argument for getting the ip and port, enforcing int ##### 
-	print("Enter the server's ip:")
-	local_ip = input()
-	print("What is the port?")
-	local_port = int(input())
-	return (local_ip, local_port)
+from udp_lib import *
 
 def main():
     # Create a UDP socket at client side
