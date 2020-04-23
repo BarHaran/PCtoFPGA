@@ -18,7 +18,7 @@ def main():
     udp_client_socket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
     server_address_port = getAddressPort()
     msg = ""
-    while (msg != "quit" | msg != "exit"):
+    while ((msg != "quit") | (msg != "exit")):
         print("What is your message?")
         msg = input()
         bytes_to_send   = str.encode(msg)

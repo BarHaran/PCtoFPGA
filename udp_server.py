@@ -37,11 +37,11 @@ def main():
 		print("Client IP Address:{}".format(address))
 		# Sending a reply depending on the message
 		if(message == b"quit"):
-			udp_server_socket.sendto(b"Goodbye!", address)
+			udp_server_socket.sendto(b"Goodbye", address)
 		elif (message == b"exit"):
 			udp_server_socket.sendto(b"Server shutting down", address)
 		else:
-			udp_server_socket.sendto("Message was {}".format(message), address)
+			udp_server_socket.sendto(b"Server got your message", address)
 
 
 if __name__ == "__main__":
