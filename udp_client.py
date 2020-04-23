@@ -26,3 +26,6 @@ def main():
         udp_client_socket.sendto(bytes_to_send, server_address_port)
         msg_from_server = udp_client_socket.recvfrom(BUFFER_SIZE)
         print("Message from Server {}".format(msg_from_server[0]))
+
+if __name__ == "__main__":
+	main()
