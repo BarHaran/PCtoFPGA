@@ -10,17 +10,17 @@ def main():
 
         # Bind to address and ip
         tcp_server_socket.bind((local_ip, local_port))
+        tcp_server_socket.listen(1)
         print("tcp server up and listening")
 
         message = b""
+        conn, addr = tcp_server_socket.accept()
 
         # Listen for incoming messages until given exit signal
         while(message != b"exit"):
-                bytes_address_pair = tcp_server_socket.recvfrom(BUFFER_SIZE)
-                message = bytes_address_pair[0]
-                address = bytes_address_pair[1]
-                print("Message from Client:{}".format(message))
-                print("Client IP Address:{}".format(address))
+                # Recieve data from the tcp connection
+                bytes_msg = tcp_server_socket.recv(BUFFER_SIZE)
+
                 # Sending a reply depending on the message
                 if(message == b"quit"):
                         tcp_server_socket.sendto(b"Goodbye", address)
