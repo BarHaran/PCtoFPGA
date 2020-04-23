@@ -7,11 +7,9 @@ BUFFER_SIZE  = 1024
 
 # Function gets the ip address from the machine, needs to be given a port manually
 def getAddressPort():
-	# Get server ip
-	server_hostname = socket.gethostname()
-	local_ip = socket.gethostbyname(server_hostname)
-	print("Server`s ip address is " + str(local_ip))
-	##### Add script argument for getting port, enforcing int ##### 
+	##### Add script argument for getting the ip and port, enforcing int ##### 
+	print("Input the server's ip:")
+	local_ip = input()
 	print("What is the port?")
 	local_port = int(input())
 	return [local_ip, local_port]
@@ -28,10 +26,10 @@ def main():
 	udp_server_socket.bind((local_ip, local_port))
 	print("UDP server up and listening")
 
-	message = ""
+	message = b""
 
 	# Listen for incoming DGRAM until given exit signal
-	while(message != "exit"):
+	while(message != b"exit"):
 	    bytes_address_pair = udp_server_socket.recvfrom(BUFFER_SIZE)
 	    message = bytes_address_pair[0]
 	    address = bytes_address_pair[1]
