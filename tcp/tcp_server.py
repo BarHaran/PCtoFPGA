@@ -16,6 +16,8 @@ def main():
         message = b""
         conn, addr = tcp_server_socket.accept()
 
+        print("Got connection from {}".format(addr))
+
         # Listen for incoming messages until given exit signal
         while(message != b"exit"):
                 # Recieve data from the tcp connection
@@ -23,11 +25,11 @@ def main():
 
                 # Sending a reply depending on the message
                 if(message == b"quit"):
-                        tcp_server_socket.sendto(b"Goodbye", addr)
+                        conn.send(b"Goodbye")
                 elif (message == b"exit"):
-                        tcp_server_socket.sendto(b"Server shutting down", addr)
+                        conn.send(b"Server shutting down")
                 else:
-                        tcp_server_socket.sendto(b"Server got your message", addr)
+                        conn.send(b"Server got your message")
 
 
 if __name__ == "__main__":

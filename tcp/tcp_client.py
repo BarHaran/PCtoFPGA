@@ -14,7 +14,7 @@ def main():
         # Send to server using created TCP socket
         tcp_client_socket.send(bytes_to_send)
         msg_from_server = tcp_client_socket.recv(BUFFER_SIZE)
-        print("Message from Server {}".format(msg_from_server[0]))
+        print("Message from Server {}".format(msg_from_server))
 
 
 if __name__ == "__main__":
